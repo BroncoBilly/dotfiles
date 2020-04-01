@@ -1,20 +1,15 @@
-# $OpenBSD: dot.profile,v 1.4 2005/02/16 06:56:57 matthieu Exp $
+# $OpenBSD: dot.profile,v 1.5 2018/02/02 02:29:54 yasuoka Exp $
 #
 # sh/ksh initialization
 
-PATH=$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/local/bin:/usr/local/sbin:/usr/games:.
+PATH=$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/local/bin:/usr/local/sbin:/usr/games
 export PATH HOME TERM
 
-EDITOR=ed
-VISUAL=vi
-export EDITOR VISUAL
+export EDITOR=ed
+export VISUAL=vi
 
-TMPDIR=/tmp
-export TMPDIR
+export TMPDIR=/tmp
+export TMP=/tmp
 
-TMP=/tmp
-export TMP
-
-ENV=$HOME/.kshrc
-export ENV
+export ENV=$HOME/.kshrc
 
