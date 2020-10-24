@@ -1,0 +1,5 @@
+#!/bin/sh
+
+printf "\033&k2G" && cat && printf "\033&l0H" && exit 0
+
+exit 2

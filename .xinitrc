@@ -1,5 +1,5 @@
 #!/bin/sh
-# $OpenBSD: xinitrc.cpp,v 1.12 2014/02/26 14:21:28 matthieu Exp $
+# $OpenBSD: xinitrc.cpp,v 1.13 2015/10/17 08:25:11 matthieu Exp $
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
@@ -40,21 +40,16 @@ then
 	fi
 fi
 
-# if dbus is installed, start its daemon
-if [ -x /usr/local/bin/dbus-launch -a -z "${DBUS_SESSION_BUS_ADDRESS}" ]; then
-	eval `dbus-launch --sh-syntax --exit-with-session`
-fi
-
 xsetroot -solid gray6
-xset +fp /usr/local/lib/X11/fonts/terminus
+#xset +fp /usr/local/lib/X11/fonts/terminus
+xset +fp /usr/local/share/fonts/terminus
 
 # start some nice programs
-
-#xclock -geometry 50x50-1+1 &
+xclock -geometry 50x50-1+1 &
 xconsole -iconic &
 xterm -geometry 80x24 &
-#fvwm || xterm
-spectrwm || xterm
+fvwm || xterm
+#spectrwm || xterm
 
 if [ "$SSH_AGENT_PID" ]; then
 	ssh-add -D < /dev/null
