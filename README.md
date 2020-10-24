@@ -1,3 +1,3 @@
 OpenBSD dotfiles
-Updated April 2020
+Updated October 2020
 
