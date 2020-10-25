@@ -4,17 +4,17 @@ xterm -bg black -fg white +sb &
 
 # Select which window manager to run
 
-# 1. twm
-#/usr/X11R6/bin/twm
-
-# 2. fvwm
-#/usr/X11R6/bin/fvwm
-
-# 3. cwm
+# 1. cwm
 #/usr/X11R6/bin/cwm
 
-# 4. fluxbox
-/usr/local/bin/fluxbox
+# 2. twm
+#/usr/X11R6/bin/twm
 
-# 5. spectrwm
+# 3. fvwm
+/usr/X11R6/bin/fvwm
+
+# 4. fluxbox (added)
+#/usr/local/bin/startfluxbox
+
+# 5. spectrwm (added)
 #/usr/local/bin/spectrwm
