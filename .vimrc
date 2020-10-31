@@ -33,7 +33,34 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
+syntax enable
+set background=dark
 set backupdir=$HOME/temp
+
+set expandtab
+set title
+set showmatch
+set wildmenu
+
+set tabstop=3
+set shiftwidth=3
+set softtabstop=3
+set smarttab
+
+set ignorecase
+set smartcase
+set ls=2
+set noautoindent
+
+" To number lines
+"set number
+
+" To show invisible characters
+"set list
+
+let g:zenburn_high_Contrast = 1
+
+"colorscheme desert
 
 " Put these in an autocmd group, so that we can delete them easily.
 augroup vimrcEx
