@@ -19,6 +19,11 @@ endif
 " Get the defaults that most users want.
 source $VIMRUNTIME/defaults.vim
 
+" For no other files
+"set nobackup
+"set nowritebackup
+"set noswapfile
+
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
 else
@@ -34,23 +39,38 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 syntax enable
-set background=dark
-set backupdir=$HOME/temp
+set backupdir=~/tmp
+set dir=~/tmp
 
-set expandtab
+set noerrorbells
+
 set title
 set showmatch
 set wildmenu
 
+set expandtab
 set tabstop=3
 set shiftwidth=3
 set softtabstop=3
 set smarttab
 
 set ignorecase
-set smartcase
+"set smartcase
+
 set ls=2
-set noautoindent
+
+set noautoindent 
+"set smartindent
+
+" To wrap or not wrap long lines on the display
+set nowrap
+"set wrap
+
+set incsearch
+
+" To set column marker at end
+"set colorcolumn=72
+"highlight ColorColumn ctermbg=1 " guibg=lightgray
 
 " To number lines
 "set number
@@ -58,9 +78,20 @@ set noautoindent
 " To show invisible characters
 "set list
 
+set background=dark
 let g:zenburn_high_Contrast = 1
 
 "colorscheme desert
+
+"colorscheme ayu
+"colorscheme flattened_dark
+"colorscheme gruvbox
+"colorscheme inkpot
+"colorscheme monokai
+"colorscheme nord
+"colorscheme one
+"colorscheme solarized
+"colorscheme zenburn
 
 " Put these in an autocmd group, so that we can delete them easily.
 augroup vimrcEx
