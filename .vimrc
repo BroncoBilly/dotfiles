@@ -55,7 +55,7 @@ set softtabstop=3
 set smarttab
 
 set ignorecase
-"set smartcase
+set smartcase
 
 set ls=2
 

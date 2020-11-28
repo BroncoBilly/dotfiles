@@ -1,0 +1,178 @@
+
+# ---- 1. VARIABLES ----
+
+Color
+{
+# Active window
+   BorderColor          "Blue"
+
+# A new window from menu
+   DefaultBackground    "Black"
+   DefaultForeground    "Yellow"
+
+# Inactive window
+   BorderTileBackground "DarkGray"
+   BorderTileForeground "DarkGray"
+ 
+# Title bar 
+   TitleBackground      "MidnightBlue" 
+   TitleForeground      "LightGray"
+
+# For popup menus
+   MenuBorderColor      "Black"
+
+   MenuBackground       "LightSkyBlue"
+   MenuForeground       "Black"
+
+   MenuTitleBackground  "White"
+   MenuTitleForeground  "Black"
+
+# Menu pointers and others
+   PointerBackground    "Black"
+   PointerForeground    "White"
+}
+
+NoTitleHighlight
+OpaqueMove
+BorderWidth 2
+FramePadding 1
+TitleButtonBorderWidth 0
+TitlePadding 8
+ButtonIndent 1
+#ClientBorderWidth 
+MenuBorderWidth 2
+NoMenuShadows
+#MenuFont "xxx"
+#TitleFont "xxx"
+
+# ---- 2. BINDINGS ----
+
+LeftTitleButton  "resize.xbm"=f.resize"
+RightTitleButton "minimize.xbm"=f.iconify"
+RightTitleButton "maximize.xbm"=f.fullzoom"
+RightTitleButton "close.xbm"=f.delete"
+
+# Mouse Button1=Left, Button2=Center, Button3=Right 
+# m=Alt, c=Ctrl, s=Shift
+
+Button1 = : root : f.menu "RootMenu"
+Button2 = : root : f.menu "SystemMenu"
+Button3 = : root : f.menu "TwmWindows"
+
+Movedelta 1
+
+Function "raise-lower-move" { f.move f.raiselower } 
+Function "move-or-lower"    { f.move f.deltastop f.lower } 
+Function "move-or-raise"    { f.move f.deltastop f.raise } 
+Function "move-or-iconify"  { f.move f.deltastop f.iconify } 
+
+Button1 = : title : f.function "raise-lower-move"
+Button2 = : title|frame : f.menu "WindowMenu"
+Button3 = : title|frame : f.resize
+
+Button1 = m : window|icon : f.function "move-or-lower"
+Button2 = m : window|icon : f.function "move-or-iconify"
+Button3 = m : window|icon : f.function "move-or-raise"
+
+Button3 = s : window : f.resize
+
+#Function "winup" { f.circleup } 
+#"Tab" = m : root|window|frame|title : f.function "winup"
+  
+#Button1 = m : title|frame : f.zoom
+
+#Button3 = m : title|frame : f.horizoom
+
+DefaultFunction f.nop
+
+# Not all work
+"F1"  = : all : f.iconify
+"F2"  = : all : f.raiselower
+#"F3"  = : all : f.warpring "next"
+#"F4"  = : all : f.warpto "xmh"
+#"F5"  = : all : f.warpto "vim"
+#"F6"  = : all : f.colormap "next"
+#"F7"  = : all : f.colormap "default"
+#"F8"  = : all : f.warpto "vim"
+#"F9"  = : all : f.warpto "vim"
+#"F10" = : all : f.warpto "vim"
+#"F11" = : all : f.warpto "vim"
+#"F12" = : all : f.warptoscreen "next"
+
+# ---- 3. MENUS ----
+
+# Left mouse button
+Menu "RootMenu"
+{
+   "Root Menu"     f.title
+   "Twm Version"   f.version
+   "Xlock"         f.exec "xlock -mode pyro &"
+   "Restart"       f.restart
+   "Start cwm"     f.startwm "cwm"
+   "Start fvwm"    f.startwm "fvwm"
+   "Logout"        f.quit
+}
+
+Menu "ProgramMenu"
+{
+   "Program Menu"  f.title
+#   "Bible"         f.exec "/usr/X11R6/bin/xterm -bg black -fg yellow +sb -e /usr/local/bin/bible &"
+#   "Dillo"         f.exec "/usr/local/bin/dillo &"
+   "Top"           f.exec "/usr/X11R6/bin/xterm -bg black -fg white  +sb -e top &"
+   "XCalc"         f.exec "/usr/X11R6/bin/xcalc &"
+   "Xterm"         f.exec "/usr/X11R6/bin/xterm -bg black -fg yellow +sb &"
+}
+
+Menu "WindowMenu"
+{
+   "Window Operations"  f.title
+   "Iconify"            f.iconify
+   "Refresh"            f.winrefresh
+   "Move"               f.move
+   "Resize"             f.resize
+   "Hide"               f.lower
+   "Expose"             f.raise
+   "Identify"           f.identify
+   "Save"               f.saveyourself
+   "Delete"             f.delete
+   "Destroy"            f.destroy
+   ""                   f.nop
+   "Show Icon Manager"  f.showiconmgr
+   "Hide Icon Manager"  f.hideiconmgr
+   "Sort Icon Manager"  f.sorticonmgr
+}
+
+Menu "ZoomMenu"
+{
+   "Zoom Menu"     f.title
+   "Left Zoom"     f.leftzoom
+   "Right Zoom"    f.rightzoom
+   "Top Zoom"      f.topzoom
+   "Bottom Zoom"   f.bottomzoom
+   "Horizontal Zoom"   f.horizoom
+   "Vertical Zoom"     f.zoom
+   "Full Zoom"     f.fullzoom
+}
+
+# Center mouse button
+Menu "SystemMenu"
+{
+   "System Menu"   f.title
+   "Root Menu"     f.menu "RootMenu" 
+   "Program Menu"  f.menu "ProgramMenu" 
+   "Window Menu"   f.menu "WindowMenu" 
+   "Zoom Menu"     f.menu "ZoomMenu" 
+
+   ""              f.nop
+   "Refresh"       f.refresh
+   "Auto Raise"    f.autoraise
+   "Beep"          f.beep
+   "Focus"         f.focus
+   "Unfocus"       f.unfocus
+   "Force Move"    f.forcemove
+   "Deiconify"     f.deiconify
+
+#   "Priority"     f.priority "string"
+   "Raise Lower"   f.raiselower
+}
+
