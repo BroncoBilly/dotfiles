@@ -21,5 +21,8 @@ alias ll='/bin/ls -lF'
 alias lm='/bin/ls -lF | more'
 alias lt='/bin/ls -lrt'
 alias psa='/bin/ps -aux'
-alias vimx='/usr/local/bin/vim -T xterm-256color'
+
+# Added programs
+#alias vimx='/usr/local/bin/vim -T xterm-256color'
+#alias xc='/usr/local/bin/xcolors -geometry 768x768'
 
